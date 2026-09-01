@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울재난안전가이드 - 회원가입</title>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        .signup-container {
+            background-color: #ffffff;
+            padding: 35px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 340px;
+            box-sizing: border-box;
+
+            /* 🟢 로그인 화면과 동일하게 시원한 1.95배 줌 배율 적용 */
+            zoom: 1.95;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333333;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 12px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #666666;
+            margin-bottom: 4px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #dddddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 13px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #10b981;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .signup-btn:hover {
+            background-color: #059669;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 11px;
+            color: #666666;
+        }
+
+        .login-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 3px;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 11px;
+            text-align: center;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="signup-container">
+    <h2>회원가입</h2>
+
+    <!-- 에러 메시지 출력 -->
+    <div th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></div>
+
+    <form action="/api/users/signup" method="POST">
+        <div class="input-group">
+            <label for="username">아이디</label>
+            <input type="text" id="username" name="username" placeholder="아이디" required autocomplete="username">
+        </div>
+        <div class="input-group">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호" required autocomplete="new-password">
+        </div>
+        <div class="input-group">
+            <label for="realname">이름</label>
+            <input type="text" id="realname" name="realname" placeholder="실명" required>
+        </div>
+        <div class="input-group">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required autocomplete="email">
+        </div>
+        <button type="submit" class="signup-btn">가입하기</button>
+    </form>
+
+    <div class="login-link">
+        이미 계정이 있으신가요?<a href="/login">로그인</a>
+    </div>
+</div>
+
+<!-- 💡 에러/성공 알림창 팝업 처리 -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var errorMessage = /*[[${errorMessage}]]*/ null;
+    var successMessage = /*[[${successMessage}]]*/ null;
+
+    if (errorMessage) {
+        alert(errorMessage);
+    }
+    if (successMessage) {
+        alert(successMessage);
+    }
+    /*]]>*/
+</script>
+</body>
+</html>

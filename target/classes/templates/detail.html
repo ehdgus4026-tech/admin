@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서울재난안전가이드 - 게시글 상세</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style> body { zoom: 150%; } </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+<header class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm">
+  <div class="flex items-center gap-2">
+    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm shadow-sm">
+      <i class="fa-solid fa-file-lines"></i>
+    </div>
+    <h1 class="font-bold text-slate-900 text-base">서울재난안전가이드</h1>
+  </div>
+  <div class="flex items-center gap-3">
+    <a href="/posts" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition">
+      <i class="fa-solid fa-list mr-1"></i> 목록으로
+    </a>
+  </div>
+</header>
+
+<main class="max-w-2xl mx-auto px-4 py-10 flex-1 w-full space-y-6">
+  <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-6">
+    <div class="border-b border-slate-100 pb-4 space-y-2">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded" th:text="'#' + ${post.id}">#1</span>
+        <span class="text-xs text-slate-400" th:text="${#temporals.format(post.createDate, 'yyyy-MM-dd HH:mm')}">2026-08-26 12:00</span>
+      </div>
+      <h2 class="font-bold text-slate-900 text-lg" th:text="${post.title}">게시글 제목</h2>
+      <p class="text-xs text-slate-500"><i class="fa-solid fa-user mr-1 text-slate-400"></i>작성자: <span class="font-semibold text-slate-700" th:text="${post.writer}">작성자</span></p>
+    </div>
+
+    <div class="min-h-[160px] text-xs text-slate-700 leading-relaxed whitespace-pre-wrap" th:text="${post.content}">
+      게시글 내용이 출력되는 영역입니다.
+    </div>
+
+    <div class="flex justify-between items-center pt-4 border-t border-slate-100">
+      <a href="/posts" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold rounded-xl transition">
+        <i class="fa-solid fa-arrow-left mr-1"></i> 목록
+      </a>
+
+      <!-- 컨트롤러에서 전달한 canEdit 변수로 수정/삭제 권한 제어 -->
+      <div class="flex gap-2" th:if="${canEdit}">
+        <a th:href="@{/posts/edit/{id}(id=${post.id})}" class="px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded-xl shadow-sm transition">
+          수정
+        </a>
+        <a th:href="@{/posts/delete/{id}(id=${post.id})}" onclick="return confirm('정말 삭제하시겠습니까?');" class="px-3.5 py-2 bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold rounded-xl shadow-sm transition">
+          삭제
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
