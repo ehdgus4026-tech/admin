@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안전 가이드 시스템</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style> body { zoom: 150%; } </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col items-center justify-start pt-32 antialiased relative">
+
+<!-- 💡 우측 상단 로그인 정보 및 로그아웃 버튼 영역 추가 -->
+<div class="absolute top-6 right-8 flex items-center space-x-4">
+    <!-- 로그인이 되어 있는 경우 세션 아이디 출력 -->
+    <span th:if="${session.loginUser != null}" class="text-sm font-medium text-slate-700">
+        👤 <b th:text="${session.loginUser}" class="text-slate-900">사용자</b>님 환영합니다!
+    </span>
+
+    <!-- 로그아웃 버튼 -->
+    <a th:href="@{/logout}" class="px-3.5 py-2 bg-red-500 hover:bg-red-600 text-white text-xs font-bold rounded-lg shadow-sm transition">
+        로그아웃
+    </a>
+</div>
+
+<!-- 메인 콘텐츠 박스 -->
+<div class="bg-white rounded-2xl border border-slate-200 p-12 shadow-sm w-full max-w-xl text-center space-y-8">
+    <div class="space-y-3">
+        <h1 class="font-bold text-slate-900 text-2xl">안전 가이드 시스템</h1>
+        <p class="text-sm text-slate-400">원하시는 메뉴를 선택해주세요.</p>
+    </div>
+    <div class="space-y-4">
+        <a href="/shelters/air" class="block w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-sm transition">대피소 DB 조회하기</a>
+        <a href="/posts" class="block w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition">게시글 목록</a>
+    </div>
+</div>
+
+</body>
+</html>
