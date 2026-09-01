@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 수정</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f8; margin: 0; padding: 40px; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { margin-top: 0; color: #333; }
+        input, textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        textarea { height: 200px; resize: vertical; }
+        .btn-group { display: flex; gap: 10px; }
+        .btn { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; }
+        .btn-save { background-color: #28a745; color: white; }
+        .btn-cancel { background-color: #6c757d; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>게시글 수정</h2>
+    <form th:action="@{/posts/edit/{id}(id=${post.id})}" method="post">
+        <label>제목</label>
+        <input type="text" name="title" th:value="${post.title}" required>
+
+        <label>내용</label>
+        <textarea name="content" th:text="${post.content}" required></textarea>
+
+        <div class="btn-group">
+            <button type="submit" class="btn btn-save">수정 완료</button>
+            <a th:href="@{/posts/{id}(id=${post.id})}" class="btn btn-cancel">취소</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

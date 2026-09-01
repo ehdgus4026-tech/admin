@@ -1,0 +1,109 @@
+Error: Unable to access jarfile admin.jar
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2026-08-28T11:00:17.876+09:00  INFO 4280 --- [           main] com.example.demo.DemoApplication         : Starting DemoApplication v0.0.1-SNAPSHOT using Java 17.0.20.1 with PID 4280 (/root/admin/target/demo-0.0.1-SNAPSHOT.jar started by root in /root/admin)
+2026-08-28T11:00:17.878+09:00  INFO 4280 --- [           main] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-08-28T11:00:19.309+09:00  INFO 4280 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-28T11:00:19.379+09:00  INFO 4280 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 5 JPA repository interfaces.
+2026-08-28T11:00:20.020+09:00  INFO 4280 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-08-28T11:00:20.028+09:00  INFO 4280 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-28T11:00:20.028+09:00  INFO 4280 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-08-28T11:00:20.065+09:00  INFO 4280 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-08-28T11:00:20.066+09:00  INFO 4280 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2065 ms
+2026-08-28T11:00:20.333+09:00  INFO 4280 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-28T11:00:20.531+09:00  INFO 4280 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2bfc2f8b
+2026-08-28T11:00:20.533+09:00  INFO 4280 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-28T11:00:20.638+09:00  INFO 4280 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-28T11:00:20.696+09:00  INFO 4280 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-08-28T11:00:20.738+09:00  INFO 4280 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-08-28T11:00:20.969+09:00  INFO 4280 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-28T11:00:21.038+09:00  WARN 4280 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-28T11:00:21.843+09:00  INFO 4280 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-28T11:00:21.903+09:00  INFO 4280 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+
+>>> [PythonRunner] 실행 시작: scripts/excel_to_mysql.py
+[Python Log][scripts/excel_to_mysql.py] Traceback (most recent call last):
+[Python Log][scripts/excel_to_mysql.py]   File "/root/admin/scripts/excel_to_mysql.py", line 3, in <module>
+[Python Log][scripts/excel_to_mysql.py]     import pandas as pd
+[Python Log][scripts/excel_to_mysql.py] ModuleNotFoundError: No module named 'pandas'
+>>> [PythonRunner] 실행 종료 (scripts/excel_to_mysql.py, 종료 코드: 1)
+
+>>> [PythonRunner] 실행 시작: scripts/airstrike.py
+[Python Log][scripts/airstrike.py] Traceback (most recent call last):
+[Python Log][scripts/airstrike.py]   File "/root/admin/scripts/airstrike.py", line 4, in <module>
+[Python Log][scripts/airstrike.py]     import pymysql
+[Python Log][scripts/airstrike.py] ModuleNotFoundError: No module named 'pymysql'
+>>> [PythonRunner] 실행 종료 (scripts/airstrike.py, 종료 코드: 1)
+
+>>> [PythonRunner] 실행 시작: scripts/earthquake.py
+[Python Log][scripts/earthquake.py] Traceback (most recent call last):
+[Python Log][scripts/earthquake.py]   File "/root/admin/scripts/earthquake.py", line 3, in <module>
+[Python Log][scripts/earthquake.py]     import pymysql
+[Python Log][scripts/earthquake.py] ModuleNotFoundError: No module named 'pymysql'
+>>> [PythonRunner] 실행 종료 (scripts/earthquake.py, 종료 코드: 1)
+2026-08-28T11:00:22.870+09:00  WARN 4280 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-28T11:00:22.915+09:00  INFO 4280 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-08-28T11:00:23.750+09:00  INFO 4280 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-08-28T11:00:23.853+09:00  INFO 4280 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-08-28T11:00:23.870+09:00  INFO 4280 --- [           main] com.example.demo.DemoApplication         : Started DemoApplication in 6.454 seconds (process running for 6.96)
+Hibernate: select u1_0.id from user u1_0 where u1_0.username=? limit ?
+2026-08-28T11:00:25.290+09:00  INFO 4280 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-28T11:00:25.290+09:00  INFO 4280 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-28T11:00:25.293+09:00  INFO 4280 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select es1_0.shlt_id,es1_0.ctpv_nm,es1_0.daddr,es1_0.fclt_nm,es1_0.lat,es1_0.lot,es1_0.mng_dept_nm,es1_0.sgg_nm from earthquake es1_0 limit ?,?
+Hibernate: select count(es1_0.shlt_id) from earthquake es1_0
+Hibernate: select fs1_0.shlt_id,fs1_0.ctpv_nm,fs1_0.daddr,fs1_0.fclt_nm,fs1_0.lat,fs1_0.lot,fs1_0.mng_dept_nm,fs1_0.sgg_nm from flood fs1_0 limit ?,?
+Hibernate: select count(fs1_0.shlt_id) from flood fs1_0
+Hibernate: select fs1_0.shlt_id,fs1_0.ctpv_nm,fs1_0.daddr,fs1_0.fclt_nm,fs1_0.lat,fs1_0.lot,fs1_0.mng_dept_nm,fs1_0.sgg_nm from flood fs1_0 where fs1_0.fclt_nm like ? escape '\\' or fs1_0.daddr like ? escape '\\' limit ?,?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select es1_0.shlt_id,es1_0.ctpv_nm,es1_0.daddr,es1_0.fclt_nm,es1_0.lat,es1_0.lot,es1_0.mng_dept_nm,es1_0.sgg_nm from earthquake es1_0 limit ?,?
+Hibernate: select count(es1_0.shlt_id) from earthquake es1_0
+Hibernate: select fs1_0.shlt_id,fs1_0.ctpv_nm,fs1_0.daddr,fs1_0.fclt_nm,fs1_0.lat,fs1_0.lot,fs1_0.mng_dept_nm,fs1_0.sgg_nm from flood fs1_0 limit ?,?
+Hibernate: select count(fs1_0.shlt_id) from flood fs1_0
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?
+Hibernate: select ars1_0.shlt_id,ars1_0.ctpv_nm,ars1_0.daddr,ars1_0.fclt_nm,ars1_0.lat,ars1_0.lot,ars1_0.mng_dept_nm,ars1_0.sgg_nm from airstrike ars1_0 limit ?,?
+Hibernate: select count(ars1_0.shlt_id) from airstrike ars1_0
+Hibernate: select u1_0.id,u1_0.email,u1_0.password,u1_0.realname,u1_0.username from user u1_0 where u1_0.username=?

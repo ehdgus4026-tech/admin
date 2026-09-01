@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록 목록</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style> body { zoom: 150%; } </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+<header class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm">
+    <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm shadow-sm">
+            <i class="fa-solid fa-list"></i>
+        </div>
+        <h1 class="font-bold text-slate-900 text-base">서울재난안전가이드</h1>
+    </div>
+
+    <!-- 💡 우측 상단 로그인 정보 및 로그아웃 버튼 추가 -->
+    <div class="flex items-center gap-3">
+        <!-- 로그인 상태일 때만 표시 -->
+        <span th:if="${session.loginUser != null}" class="text-xs font-medium text-slate-700">
+            👤 <b th:text="${session.loginUser}" class="text-slate-900">사용자</b>님
+        </span>
+        <a th:href="@{/logout}" th:if="${session.loginUser != null}" class="px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white text-xs font-bold rounded-xl shadow-sm transition">
+            로그아웃
+        </a>
+
+        <!-- 기존 대피소 조회 버튼 -->
+        <a href="/shelters/air" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-sm transition">
+            <i class="fa-solid fa-person-shelter mr-1"></i> 대피소 조회하기
+        </a>
+    </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 py-10 flex-1 w-full space-y-6">
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex justify-between items-center">
+            <div>
+                <h2 class="font-bold text-slate-900 text-base">방명록 목록</h2>
+                <p class="text-xs text-slate-400">자유롭게 의견을 남겨주세요. (총 <span th:text="${posts.totalElements}">0</span>개)</p>
+            </div>
+            <a href="/posts/write" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-sm transition">
+                <i class="fa-solid fa-pen mr-1"></i> 글쓰기
+            </a>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                <tr class="border-b border-slate-200 text-slate-500 bg-slate-50">
+                    <th class="py-3 px-4">번호</th>
+                    <th class="py-3 px-4">제목</th>
+                    <th class="py-3 px-4">작성자</th>
+                    <th class="py-3 px-4">내용</th>
+                    <th class="py-3 px-4 text-center">관리</th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                <tr th:each="post, stat : ${posts}" class="hover:bg-slate-50/50 transition">
+                    <td class="py-3 px-4 text-slate-500" th:text="${posts.totalElements - (posts.number * posts.size) - stat.index}">1</td>
+                    <td class="py-3 px-4 font-bold">
+                        <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}" class="text-blue-600 hover:underline">제목</a>
+                    </td>
+                    <td class="py-3 px-4 text-slate-600" th:text="${post.writer}">작성자</td>
+                    <td class="py-3 px-4 text-slate-500 truncate max-w-xs" th:text="${post.content}">내용</td>
+
+                    <!-- 수정된 권한 체크 (문자열 세션 값 비교) -->
+                    <td class="py-3 px-4 text-center space-x-2">
+                        <th:block th:if="${session.loginUser != null}">
+                            <th:block th:if="${session.loginUser == 'super' or session.loginUser == post.writer}">
+                                <a th:href="@{/posts/edit/{id}(id=${post.id})}" class="text-amber-600 hover:underline font-bold">수정</a>
+                                <a th:href="@{/posts/delete/{id}(id=${post.id})}" onclick="return confirm('정말 삭제하시겠습니까?');" class="text-rose-500 hover:underline font-bold">삭제</a>
+                            </th:block>
+                        </th:block>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center py-8 text-slate-400 text-xs" th:if="${posts == null or #lists.isEmpty(posts)}">등록된 게시글이 없습니다.</div>
+
+        <!-- 페이징 내비게이션 영역 -->
+        <div class="flex justify-center items-center gap-2 pt-4 border-t border-slate-100" th:if="${posts != null and posts.totalPages > 0}">
+            <a th:href="@{/posts(page=${posts.number - 1})}" th:if="${posts.hasPrevious()}" class="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded-xl hover:bg-slate-50">이전</a>
+            <span class="text-xs text-slate-600 font-bold" th:text="${posts.number + 1 + ' / ' + posts.totalPages}">1 / 1</span>
+            <a th:href="@{/posts(page=${posts.number + 1})}" th:if="${posts.hasNext()}" class="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs font-bold rounded-xl hover:bg-slate-50">다음</a>
+        </div>
+    </div>
+</main>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var errorMessage = /*[[${errorMessage}]]*/ null;
+    var successMessage = /*[[${successMessage}]]*/ null;
+
+    if (errorMessage) {
+        alert(errorMessage);
+    }
+    if (successMessage) {
+        alert(successMessage);
+    }
+    /*]]>*/
+</script>
+</body>
+</html>
